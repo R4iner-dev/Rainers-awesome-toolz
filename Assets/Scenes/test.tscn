@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d3sic0v25nl5t"]
+
+[ext_resource type="Script" uid="uid://ckgnlkbhpvtw5" path="res://Assets/Scenes/test.gd" id="1_3fuio"]
+[ext_resource type="PackedScene" uid="uid://pndnu7vcfj1l" path="res://addons/rainers_awesome_toolz!1/Health/health.tscn" id="1_4ejv0"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=457619814 node_paths=PackedStringArray("health")]
+script = ExtResource("1_3fuio")
+health = NodePath("Health")
+
+[node name="Health" parent="." unique_id=1253089177 instance=ExtResource("1_4ejv0")]
+starting_health = 100.0
+
+[connection signal="damaged" from="Health" to="." method="_on_health_damaged"]
+[connection signal="died" from="Health" to="." method="_on_health_died"]
+[connection signal="healed" from="Health" to="." method="_on_health_healed"]
