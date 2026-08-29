@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmxeygvq26b4j"]
 
-[ext_resource type="Script" uid="uid://csix2k5k3a4uk" path="res://Assets/Scripts/Modules/camera_follow_module.gd" id="1_rdu8i"]
+[ext_resource type="Script" path="res://Assets/Scripts/Modules/camera_follow_module.gd" id="1_rdu8i"]
 
 [node name="CameraFollowModule" type="Node" unique_id=194179347]
 script = ExtResource("1_rdu8i")

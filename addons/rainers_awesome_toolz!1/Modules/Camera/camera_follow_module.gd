@@ -1,3 +1,5 @@
+## Handles camera follow functionality for both first-person and third-person views. NOTE: This works only on 3d games for now.
+
 extends Node
 class_name CameraFollowModule
 
