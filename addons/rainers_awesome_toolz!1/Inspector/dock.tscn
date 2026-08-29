@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cxr7qg2bporme"]
+
+[ext_resource type="Script" uid="uid://td7iy3yvanij" path="res://addons/rainers_awesome_toolz!1/Inspector/dock.gd" id="1_38nlp"]
+
+[node name="Dock" type="Control" unique_id=57139128]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38nlp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1635018649]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Modules" type="Label" parent="VBoxContainer" unique_id=871912878]
+layout_mode = 2
+text = "Modules"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1931574552]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="VBoxContainer" unique_id=365804121]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+vertical_alignment = 1
+
+[node name="CheckForUpdates" type="Button" parent="VBoxContainer" unique_id=739164146]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Check for Updates"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=418978577]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -342.0
+offset_top = -58.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="CurrentVersion" type="Label" parent="VBoxContainer2" unique_id=1447127999]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+text = "Current Version: 1.0.0 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1672725486]
+
+[connection signal="pressed" from="VBoxContainer/CheckForUpdates" to="." method="_on_check_for_updates_pressed"]
