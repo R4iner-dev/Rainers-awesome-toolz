@@ -278,7 +278,7 @@ func _install_update() -> void:
 
 func _replace_addon() -> void:
 	var addon_path := "res://addons/rainers_awesome_toolz"
-	var backup_path := "res://addons/rainers_awesome_toolz_backup"
+	var backup_path := "user://rainers_awesome_toolz_backup"
 
 	var addon_absolute := ProjectSettings.globalize_path(addon_path)
 	var backup_absolute := ProjectSettings.globalize_path(backup_path)
