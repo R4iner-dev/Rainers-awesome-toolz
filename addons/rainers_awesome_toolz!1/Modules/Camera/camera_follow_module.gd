@@ -49,6 +49,8 @@ func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
         if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
             return
+        if current_view == CameraView.THIRD_PERSON:
+            return
 
         camera_rot_y -= event.relative.x * mouse_sensitivity
         camera_rot_x -= event.relative.y * mouse_sensitivity
@@ -93,3 +95,7 @@ func set_third_person_view() -> void:
 
     spring_arm.spring_length = third_person_distance
     current_view = CameraView.THIRD_PERSON
+
+func switch_mouse_mode(mode: Input.MouseMode) -> void:
+    mouse_mode = mode
+    Input.set_mouse_mode(mouse_mode)

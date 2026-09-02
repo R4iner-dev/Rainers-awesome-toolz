@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_38nlp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1635018649]
@@ -19,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Modules" type="Label" parent="VBoxContainer" unique_id=871912878]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=871912878]
 layout_mode = 2
 text = "Modules"
 horizontal_alignment = 1
@@ -28,38 +29,63 @@ vertical_alignment = 3
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1931574552]
 layout_mode = 2
 
-[node name="Status" type="Label" parent="VBoxContainer" unique_id=365804121]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 10
-vertical_alignment = 1
+[node name="VBoxContainer2" type="HBoxContainer" parent="." unique_id=1133365406]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -86.0
+offset_right = 155.0
+grow_vertical = 0
+mouse_filter = 2
 
-[node name="CheckForUpdates" type="Button" parent="VBoxContainer" unique_id=739164146]
+[node name="CheckForUpdates" type="Button" parent="VBoxContainer2" unique_id=739164146]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Check for Updates"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=418978577]
+[node name="Status" type="Label" parent="VBoxContainer2" unique_id=365804121]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Update" type="Button" parent="VBoxContainer2" unique_id=2136564956]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.62125784, 0.9988825, 0, 1)
+text = "Update Now"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="." unique_id=617420450]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -342.0
-offset_top = -58.0
+offset_left = -168.0
+offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="CurrentVersion" type="Label" parent="VBoxContainer2" unique_id=1447127999]
+[node name="LatestVersion" type="Label" parent="VBoxContainer3" unique_id=1421589075]
 layout_mode = 2
-size_flags_horizontal = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="VBoxContainer3" unique_id=1447127999]
+layout_mode = 2
+size_flags_horizontal = 10
 size_flags_vertical = 10
-text = "Current Version: 1.0.0 "
+text = "Current Version: 1.0.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1672725486]
 
-[connection signal="pressed" from="VBoxContainer/CheckForUpdates" to="." method="_on_check_for_updates_pressed"]
+[node name="DownloadRequest" type="HTTPRequest" parent="." unique_id=354015323]
+
+[connection signal="pressed" from="VBoxContainer2/CheckForUpdates" to="." method="_on_check_for_updates_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Update" to="." method="_on_update_pressed"]
