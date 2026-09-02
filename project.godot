@@ -20,7 +20,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/rainers_awesome_toolz!1/plugin.cfg")
+enabled=PackedStringArray("res://addons/rainers_awesome_toolz/plugin.cfg")
 
 [physics]
 

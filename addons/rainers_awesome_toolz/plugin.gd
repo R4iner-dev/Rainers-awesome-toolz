@@ -4,7 +4,7 @@ extends EditorPlugin
 var dock: EditorDock
 
 func _enter_tree() -> void:
-    var dock_scene := preload("res://addons/rainers_awesome_toolz!1/Inspector/dock.tscn")
+    var dock_scene := preload("res://addons/rainers_awesome_toolz/Inspector/dock.tscn")
     var dock_control := dock_scene.instantiate()
 
     dock = EditorDock.new()

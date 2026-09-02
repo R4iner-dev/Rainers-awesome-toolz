@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://pndnu7vcfj1l"]
+
+[ext_resource type="Script" uid="uid://dmhx8i052pqe6" path="res://addons/rainers_awesome_toolz/Modules/Health/health.gd" id="1_04um1"]
+
+[node name="Health" type="Node" unique_id=1253089177]
+script = ExtResource("1_04um1")

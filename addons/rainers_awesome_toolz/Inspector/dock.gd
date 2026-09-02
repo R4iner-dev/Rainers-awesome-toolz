@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+const RELEASE_ASSET_NAME := "rainers_awesome_toolz.zip"
+const PACKAGE_ROOT := "rainers_awesome_toolz"
 
 var current_version := "0.0.0"
 var repo := ""
@@ -8,8 +10,8 @@ var latest_version := ""
 var download_url := ""
 var expected_sha256 := ""
 
-var temp_zip_path := "user://rainers_awesome_toolz!1_update.zip"
-var temp_dir := "user://rainers_awesome_toolz!1_update"
+var temp_zip_path := "user://rainers_awesome_toolz_update.zip"
+var temp_dir := "user://rainers_awesome_toolz_update"
 
 @onready var status: Label = $VBoxContainer2/Status
 @onready var version: Label = $VBoxContainer3/Version
@@ -82,7 +84,7 @@ func _on_request_completed(result: int, response_code: int, headers: PackedStrin
 	for asset in assets:
 		var asset_name := str(asset.get("name", ""))
 
-		if asset_name == "rainers_awesome_toolz!1.zip":
+		if asset_name == RELEASE_ASSET_NAME:
 			download_url = str(asset.get("browser_download_url", ""))
 			var digest: String = str(asset.get("digest", ""))
 			if digest.begins_with("sha256:"):
@@ -105,7 +107,7 @@ func _get_plugin_version() -> String:
 	var config := ConfigFile.new()
 
 	var error := config.load(
-		"res://addons/rainers_awesome_toolz!1/plugin.cfg"
+		"res://addons/%s/plugin.cfg" % PACKAGE_ROOT
 	)
 
 	if error != OK:
@@ -117,7 +119,7 @@ func _get_repository() -> String:
 	var config := ConfigFile.new()
 
 	var error := config.load(
-		"res://addons/rainers_awesome_toolz!1/plugin.cfg"
+		"res://addons/%s/plugin.cfg" % PACKAGE_ROOT
 	)
 
 	if error != OK:
@@ -223,7 +225,7 @@ func _install_update() -> void:
 			_reset_buttons()
 			return
 
-		if file_path.begins_with("rainers_awesome_toolz!1/") or file_path == "rainers_awesome_toolz!1":
+		if file_path.begins_with("rainers_awesome_toolz/") or file_path == "rainers_awesome_toolz":
 			has_addon_root = true
 
 	if not has_addon_root:
@@ -275,13 +277,13 @@ func _install_update() -> void:
 	_replace_addon()
 
 func _replace_addon() -> void:
-	var addon_path := "res://addons/rainers_awesome_toolz!1"
-	var backup_path := "res://addons/rainers_awesome_toolz!1_backup"
+	var addon_path := "res://addons/rainers_awesome_toolz"
+	var backup_path := "res://addons/rainers_awesome_toolz_backup"
 
 	var addon_absolute := ProjectSettings.globalize_path(addon_path)
 	var backup_absolute := ProjectSettings.globalize_path(backup_path)
 	var new_addon_absolute := ProjectSettings.globalize_path(
-		temp_dir.path_join("rainers_awesome_toolz!1")
+		temp_dir.path_join(PACKAGE_ROOT)
 	)
 
 	if DirAccess.dir_exists_absolute(backup_absolute):
@@ -304,7 +306,7 @@ func _replace_addon() -> void:
 		_reset_buttons()
 		return
 
-	# Keep the backup in place until the next successful update 
+	# Keeps the backup in place until the next successful update 
 	_remove_directory(temp_dir)
 
 	status.text = "Update installed! Restart Godot to finish."
