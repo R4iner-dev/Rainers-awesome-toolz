@@ -18,11 +18,11 @@ jobs:
 
       - name: Create addon package
         run: |
-          mkdir -p package
-          cp -r "addons/rainers_awesome_toolz" "package/rainers_awesome_toolz"
+          mkdir package
+          cp -r "addons/rainers_awesome_toolz package/"
 
           cd package
-          zip -r "../rainers_awesome_toolz.zip" "rainers_awesome_toolz"
+          zip -r "../rainers_awesome_toolz.zip rainers_awesome_toolz"
 
       - name: Create GitHub Release
         env:
